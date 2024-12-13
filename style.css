@@ -1,33 +1,32 @@
 body {
-    font-family:sans-serif
-  }
-  
-  .container {
-    width: 80%;
-    padding: 20px;
-  }
-  
-  button {
-    padding: 10px 20px;
-    background-color: #5aaa5d;
-    color:#f0e9e9;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  table {
-    border-collapse: collapse;
-    width: 100%;
-    margin-top: 20px;
-  }
-  
-  th, td {
-    border: 1px ;
-    padding: 10px;
-    text-align: left;
-  }
-  
-  th {
-    background-color: #f0e9e9;
-  }
-  
+  font-family: sans-serif
+}
+
+.container {
+  width: 80%;
+  padding: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: #fbf4f4;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px ;
+  padding: 10px;
+  text-align: left;
+}
+
+th {
+  background-color: #fbf4f4;
+}
