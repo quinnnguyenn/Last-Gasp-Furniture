@@ -9,12 +9,12 @@ function showPurchasePrompt() {
     if (item) {
       item = item.trim().toLowerCase();
 
+
       const quantity = prompt("How many " + item + "'s would you like to buy today?");
 
       if (quantity) {
         const itemData = {
           name: item,
-          
           quantity: parseInt(quantity),
           price: getItemPrice(item)
         };
@@ -41,7 +41,6 @@ function showPurchasePrompt() {
     displayInvoice(items);
   }
 }
-
 function getUserState() {
   const validStates = [
     "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
@@ -59,7 +58,6 @@ function getUserState() {
 
   return state;
 }
-
 
 function getItemPrice(item) {
   switch (item) {
@@ -80,6 +78,7 @@ function displayInvoice(items) {
   const invoiceContainer = document.getElementById("invoice");
   invoiceContainer.innerHTML = "";
 
+
   const invoiceTable = document.createElement("table");
   invoiceTable.border = 1;
 
@@ -90,8 +89,7 @@ function displayInvoice(items) {
     headerCell.textContent = headerCells[i];
   }
 
-  let itemTotal = 0;      
-
+  let itemTotal = 0;
   for (let i = 0; i < items.length; i++) {
     const itemRow = invoiceTable.insertRow();
     const item = items[i];
@@ -112,25 +110,31 @@ function displayInvoice(items) {
   const tax = calculateTax(subtotal);
   const invoiceTotal = subtotal + tax;
 
+
+
   const summaryRows = [
     ["Item Total", "$" + itemTotal.toFixed(2)],
-    ["Shipping to " + userState + "", "$" + shippingCost.toFixed(2)],
+    ["Shipping to (" + userState + ")", "$" + shippingCost.toFixed(2)],
     ["Subtotal", "$" + subtotal.toFixed(2)],
     ["Tax", "$" + tax.toFixed(2)],
     ["Invoice Total", "$" + invoiceTotal.toFixed(2)]
   ];
- 
+
   for (let i = 0; i < summaryRows.length; i++) {
     const summaryRow = summaryTable.insertRow();
-    summaryRow.insertCell().textContent = summaryRows[i][0];
+    summaryRow.insertCell().textContent =  summaryRows[i][0];
     summaryRow.insertCell().textContent = summaryRows[i][1];
   }
 
   invoiceContainer.appendChild(invoiceTable);
   invoiceContainer.appendChild(summaryTable);
 }
-  
+
 function getShippingCost(itemTotal, state) {
+  if (itemTotal >= 100) {
+    return 0;
+  }
+
   const freeShippingStates = ["WY", "NE", "KS", "MO", "IA", "IL", "WI", "MN", "ND", "SD"];
   const twentyDollarShippingStates = ["WA", "OR", "ID", "MT"];
   const thirtyDollarShippingStates = ["CO", "NM", "UT", "AZ", "NV", "CA"];
@@ -142,8 +146,8 @@ function getShippingCost(itemTotal, state) {
     return 0;
   } else if (twentyDollarShippingStates.includes(state)) {
     return 20;
-  } else if (thirtyDollarShippingStates.includes(state)) {
-    return 30;  
+  } else if (thirtyDollarShippingStates.includes(state))  {
+    return 30; 
   } else if (thirtyFiveDollarShippingStates.includes(state)) {
     return 35;
   } else if (fiftyDollarShippingStates.includes(state)) {
@@ -151,11 +155,7 @@ function getShippingCost(itemTotal, state) {
   } else if (fortyFiveDollarShippingStates.includes(state)) {
     return 45;
   } else {
-    if (itemTotal >= 100) {
-      return 0;
-    } else {
-      return 10;
-    }
+    return 10; 
   }
 }
 
