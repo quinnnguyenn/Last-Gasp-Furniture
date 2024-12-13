@@ -1,5 +1,5 @@
 body {
-    font-family:sans-serif
+    font-family: sans-serif
   }
   
   .container {
@@ -9,8 +9,8 @@ body {
   
   button {
     padding: 10px 20px;
-    background-color: #5aaa5d;
-    color:#f0e9e9;
+    background-color: #356d37;
+    color: white;
     border-radius: 5px;
     cursor: pointer;
   }
@@ -28,6 +28,5 @@ body {
   }
   
   th {
-    background-color: #f0e9e9;
+    background-color: #fbf4f4;
   }
-  
