@@ -2,10 +2,10 @@ function showPurchasePrompt() {
     const items = [];
   
     function addItem() {
-      const item = prompt("What item would you like to buy: Chair, Recliner, Table, or Umbrella?");
+      let item = prompt("What item would you like to buy: Chair, Recliner, Table, or Umbrella?");
   
       if (item) {
-        item = item.trim().toLowerCase(); 
+        item = item.trim().toLowerCase();
   
         const quantity = prompt("How many " + item + "'s would you like to buy today?");
   
@@ -13,7 +13,7 @@ function showPurchasePrompt() {
           const itemData = {
             name: item,
             quantity: parseInt(quantity),
-            price: getItemPrice(item) 
+            price: getItemPrice(item)
           };
           items.push(itemData);
   
@@ -53,12 +53,11 @@ function showPurchasePrompt() {
   
   function displayInvoice(items) {
     const invoiceContainer = document.getElementById("invoice");
-    invoiceContainer.innerHTML = ""; 
+    invoiceContainer.innerHTML = "";
   
     const invoiceTable = document.createElement("table");
     invoiceTable.border = 1;
   
-    
     const headerRow = invoiceTable.insertRow();
     const headerCells = ["Item", "Quantity", "Unit Price", "Total Price"];
     for (let i = 0; i < headerCells.length; i++) {
@@ -79,8 +78,6 @@ function showPurchasePrompt() {
       itemTotal += item.quantity * item.price;
     }
   
-   
-    
     const summaryTable = document.createElement("table");
     summaryTable.border = 1;
   
@@ -103,7 +100,7 @@ function showPurchasePrompt() {
   }
   
   function getShippingCost(itemTotal) {
-    const state = prompt("Please enter the two letter state abbreviation.").toUpperCase(); 
+    const state = prompt("Please enter the two letter state abbreviation.").toUpperCase();
     const validStates = [
       "AL", "AK", "AZ", "AR", "CA", "CO", "CT", "DE", "DC", "FL", "GA",
       "HI", "ID", "IL", "IN", "IA", "KS", "KY", "LA", "ME", "MD", "MA",
@@ -121,28 +118,27 @@ function showPurchasePrompt() {
       const fortyFiveDollarShippingStates = ["CT", "DE", "DC", "MD", "MA", "NH", "NJ", "NY", "PA", "RI", "VT", "VA", "WV"];
   
       if (freeShippingStates.includes(state)) {
-        return 0; 
+        return 0;
       } else if (twentyDollarShippingStates.includes(state)) {
-        return 20; 
+        return 20;
       } else if (thirtyDollarShippingStates.includes(state)) {
-        return 30; 
+        return 30;
       } else if (thirtyFiveDollarShippingStates.includes(state)) {
-        return 35;  
+        return 35;
       } else if (fiftyDollarShippingStates.includes(state)) {
-        return 50; 
+        return 50;
       } else if (fortyFiveDollarShippingStates.includes(state)) {
-        return 45; 
+        return 45;
       } else {
-        
         if (itemTotal >= 100) {
-          return 0; 
+          return 0;
         } else {
-          return 10;  
+          return 10;
         }
       }
     } else {
       alert("Please enter your state's two letter abbreviation.");
-      return 0;  
+      return 0;
     }
   }
   
